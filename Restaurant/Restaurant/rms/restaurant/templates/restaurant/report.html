@@ -1,0 +1,16 @@
+{% extends "admin/base_site.html" %}
+{% block content %}
+                <tbody>
+                  {% for order in orders %}
+                  <tr>
+
+                    <p>
+                    <td> Name Is : {{ order.name }},</td>
+                    <td> Order Id is : {{ order.order_id }},</td>
+                      <td>Item Id : {{ order.item_id }},</td>
+                      <td>Contact Num : {{ order.phone }}</td>
+                    </p>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+{% endblock %}

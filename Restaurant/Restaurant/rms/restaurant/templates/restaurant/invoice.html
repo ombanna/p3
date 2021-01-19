@@ -1,0 +1,48 @@
+{% extends 'restaurant/basic.html' %}
+{% block body %}
+<div class="container">
+    <div class="col my-4">
+         <h3>Enter Order Id & Get Invoice</h3>
+         <form method="post" action="#" id="trackerForm"> {% csrf_token %}
+            <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="orderId">Order Id</label>
+                    <input type="text" class="form-control" id="orderId" name="orderId" placeholder="Order Id">
+                  </div>
+
+                   <button type="submit" class="btn btn-primary">Get Invoice</button>
+            </div>
+         </form>
+    </div>
+         </div>
+{% endblock %}
+
+{% block js %}
+<script>
+$('#trackerForm').submit(function(event) {
+    $('#items').empty();
+    var formData = {
+        'orderId': $('input[name=orderId]').val()
+
+    };
+    $.ajax({
+            type: 'POST',
+            url: '/restaurant/invoice/',
+            data: formData,
+            encode: true
+        })
+
+
+             {
+                mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
+                    Sorry, We are not able to fetch this order ID and Email. Make sure to type correct order ID and Email</li>`
+                mystr2 = `<li class="list-group-item d-flex justify-content-between align-items-center">
+                    Sorry, We have Not Any Information About yours order</li>`
+                $('#items').append(mystr);
+                $('#citems').append(mystr2);
+            }
+        });
+    event.preventDefault();
+});
+</script>
+{% endblock %}

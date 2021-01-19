@@ -1,0 +1,21 @@
+ADMIN SIDE  : 
+User : rms
+Pass : 2428
+
+
+
+PostgreSQL
+
+Pass : 2428
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'DB1',
+        'USER': 'postgres',
+        'PASSWORD': '2428',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}

@@ -1,0 +1,35 @@
+{% extends 'restaurant/basic.html' %}
+
+{% load static %}
+{% block body %}
+
+<div class="container">
+    <div class="col my-4">
+        <h3>Enter Yours Details Here :</h3>
+        <form method="post" action=""> {% csrf_token %}
+            <input type="hidden" name="amount" id="amount">
+            <input type="hidden" name="item_id" value=" {{item_id}}" id="id">
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="phone">Phone</label>
+                <input type="tel" class="form-control" id="phone" name="phone"  placeholder="Enter Your Phone Number Here">
+              </div>
+            </div>
+          <button type="submit" class="btn btn-primary"  >Place Order</button>
+        </form>
+    </div>
+</div>
+
+    {% endblock %}
+{% block js %}
+<script>
+        {% if thank %}
+        alert('Thanks For Contacting Us!  Your Details has been Submited. We will get Back to soon')
+        document.location = "/restaurant/detail";
+        {% endif %}
+</script>
+{% endblock %}

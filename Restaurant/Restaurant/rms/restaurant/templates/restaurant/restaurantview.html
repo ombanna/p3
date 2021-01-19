@@ -1,0 +1,50 @@
+{% extends 'restaurant/basic.html' %}
+
+{% load static %}
+   {% block Title %} RMS res {% endblock %}
+
+{% block body %}
+
+
+
+        <div class="container">
+     <h5 class="my-4">{{restaurant.restaurant_name}}</h5>
+     <div class="row">
+        <div id="demo{{forloop.counter}}" class="col carousel slide my-3" data-ride="carousel">
+            <ul class="carousel-indicators">
+              <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class = "active"></li>
+                {% for i in range%}
+                    <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}"></li>
+                {% endfor%}
+            </ul>
+                <div class = "col-xs-3 col-sm-3 col-md-3">
+                  <div class="card align-items-center" style="width: 45rem;">
+                      <img src = ' /media/{{restaurant.image}} ' class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">{{restaurant.desc}}</p>
+                     </div>
+                  </div>
+                 </div>
+           <div class = "col-xs-3 col-sm-3 col-md-3">
+              {% for i in food %}
+              <div class = "col-xs-3 col-sm-3 col-md-3">
+                  <div class="card align-items-center" style="width: 18rem;">
+                     <h5 class="card-title"> {{i.item_name}}</h5>
+                      <img src = ' /media/{{i.image}} ' class="card-img-top" alt="...">
+                    <div class="card-body">
+
+                        <h5 class="card-title" id="namepr{{i.id}}">Rs. {{i.amount}}</h5>
+                     </div>
+                  </div>
+                 </div>
+             <center>
+                      <a href="/detail/{{i.id}}">
+                        <button id="qv{{i.id}}" class="btn btn-primary cart">Order</button></a>
+             </center>
+               {% endfor %}
+           </div>
+       </div>
+
+   </div>
+     </div>
+{% endblock %}
